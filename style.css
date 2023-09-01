@@ -1,0 +1,189 @@
+html {
+    font-size: 14px;
+  }
+  
+  @media (min-width: 768px) {
+    html {
+      font-size: 16px;
+    }
+  }
+  
+  .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+  }
+  
+  html {
+    position: relative;
+    min-height: 100%;
+  }
+  
+  body {
+    margin-bottom: 60px;
+  }
+  
+  .sub-container{
+    display: flex;
+  }
+  .sidebar{
+    border: 1px solid white;
+    width: 30%;
+    height: 100vh;
+  }
+
+  
+  .user-heading{
+    background: wheat;
+    color: gray;
+    font-weight: bold;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .single-contact{
+    background: rgb(228, 144, 144);
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid gray;
+  }
+
+  .name{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .name > p{
+    transform: translate(-50%, 25%);
+    /* transform: translateY(2px); */
+  }
+
+  .main-area{
+    position: relative;
+    border: 1px solid white;
+    width: 70%;
+    height: 90vh;
+
+  }
+
+  .main-heading{
+    background: white;
+    color: gray;
+    font-weight: bold;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+.chats-area{
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 90%;
+    align-items:flex-end ;
+    
+    overflow-y: scroll;
+    
+}
+
+
+
+.chat-items{
+  width: 100%;
+}
+
+
+.chat-item{
+    width: 100%;
+    border: 1px solid gray;
+    display: flex;
+}
+
+.right{
+  justify-content: end;
+}
+
+.one{
+  display: block;
+  width: 100%;
+}
+
+.chat-items > .two{
+  justify-self: end;
+  
+}
+.left-message > .timestamp{
+  float: left;
+}
+
+.right-message{
+  float: right;
+}
+
+.right-message > .timestamp{
+  float:right;
+}
+
+.picture > img{
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  border: 2px solid gray;
+}
+
+.message{
+  border: 1px solid gray;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+
+.text-box-container{
+  display: flex;
+  margin-top:15px;
+}
+
+
+.text-box{
+  width: 100%;
+  border: 1px solid gray;
+  display: flex;
+  justify-content: end;
+  gap: 10px;
+  padding-right: 10px;
+}
+
+.text-box > textarea{
+  width: 100%;
+  background-color: black;
+}
+
+.mid-icon > i{
+  transform: scale(1.5);
+}
+
+.large-icon > i{
+  transform: scale(2);
+}
+
+i{
+  cursor: pointer;
+}
+
+body{
+    background-color: black;
+    color: white;
+}
+
+.flex{
+  display: flex;
+  gap: 10px;
+}
+
