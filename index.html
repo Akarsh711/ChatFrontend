@@ -15,11 +15,10 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark" data-bs-theme="dark">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">Navbar</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -37,9 +36,7 @@
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="#">Action</a></li>
               <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
+              <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item" href="#">Something else here</a></li>
             </ul>
           </li>
@@ -49,7 +46,7 @@
         </ul>
         <form class="d-flex" role="search">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
+          <button class="btn btn-outline-info" type="submit">Search</button>
         </form>
       </div>
     </div>
@@ -57,16 +54,21 @@
   <div class="sub-container">
     <div class="sidebar">
       <div class="user-heading">
-        <div class="picture">
-          <img src="user.png" style="color: white;" alt="" srcset="">
+        <!-- <i class="fa-solid fa-bars"></i> -->
+        <div class="small-screen">
+          <i class="fa-solid fa-xmark"  onclick="hidebar()"></i>
+
         </div>
-        <div class="serach-bar">
+        <div class="search-bar">
           <form>
             <input placeholder="Type a name to search"></input>
           </form>
         
         </div>
-        <i class="fa-solid fa-ellipsis-vertical"></i>
+        <!-- <i class="fa-solid fa-ellipsis-vertical"></i> -->
+        <div class="picture">
+          <img src="user.png" style="color: white;" alt="" srcset="">
+        </div>
       </div>
       
       <div class="contacts">
@@ -116,6 +118,9 @@
     </div>
     <div class="main-area">
       <div class="main-heading">
+        <div class="small-screen" onclick="showbar()">
+          <i class="fa-solid fa-bars"></i>
+        </div>
        
         <div class="user">
           @Otheruserprofile
@@ -129,12 +134,38 @@
       <div class="chats-area">
         <div class="chat-items">
           
+         
+
+          
+          <div class="chat-item right">
+            <div class="flex">
+              <div class="content-box-right ">
+                <div class="message">
+                  Right nessage is it changingsadf ff    dsgasdg
+                </div>
+                <div class="message">
+                  Right nessage is it changingsadf ff    dsgasdg
+                </div>
+                <div class="message">
+                  Right nessage is it changingsadf ff    dsgasdg
+                </div>
+                <div class="timestamp">09:09</div>
+              </div>
+              <div class="picture">
+                <img class="chat-img" src="user.png" style="color: white;" alt="" srcset="">
+              </div>
+            </div>
+          </div>
+
           <div class="chat-item left">
             <div class="flex">
               <div class="picture">
-                <img src="user.png" style="color: white;" alt="" srcset="">
+                <img class="chat-img" src="user.png" style="color: white;" alt="" srcset="">
               </div>
               <div class="content-box">
+                <div class="message">
+                  left nessage is it changingsadf <br>dfdfd<br>dfd   ff    dsgasdg
+                </div>
                 <div class="message">
                   left nessage is it changingsadf <br>dfdfd<br>dfd   ff    dsgasdg
                 </div>
@@ -142,166 +173,7 @@
               </div>
             </div>
           </div>
-          
-          <div class="chat-item right">
-            <div class="flex">
-              <div class="content-box">
-                <div class="message">
-                  Right nessage is it changingsadf ff    dsgasdg
-                </div>
-                <div class="timestamp">09:09</div>
-              </div>
-              <div class="picture">
-                <img src="user.png" style="color: white;" alt="" srcset="">
-              </div>
-            </div>
-          </div>
 
-
-          <div class="chat-item left">
-            <div class="flex">
-              <div class="picture">
-                <img src="user.png" style="color: white;" alt="" srcset="">
-              </div>
-              <div class="content-box">
-                <div class="message">
-                  left nessage is it changingsadf <br>dfdfd<br>dfd   ff    dsgasdg
-                </div>
-                <div class="timestamp">09:09</div>
-              </div>
-            </div>
-          </div>
-          
-          <div class="chat-item right">
-            <div class="flex">
-              <div class="content-box">
-                <div class="message">
-                  Right nessage is it changingsadf ff    dsgasdg
-                </div>
-                <div class="timestamp">09:09</div>
-              </div>
-              <div class="picture">
-                <img src="user.png" style="color: white;" alt="" srcset="">
-              </div>
-            </div>
-          </div>
-
-
-
-          
-
-          <div class="chat-item left">
-            <div class="flex">
-              <div class="picture">
-                <img src="user.png" style="color: white;" alt="" srcset="">
-              </div>
-              <div class="content-box">
-                <div class="message">
-                  left nessage is it changingsadf <br>dfdfd<br>dfd   ff    dsgasdg
-                </div>
-                <div class="timestamp">09:09</div>
-              </div>
-            </div>
-          </div>
-          
-          <div class="chat-item right">
-            <div class="flex">
-              <div class="content-box">
-                <div class="message">
-                  Right nessage is it changingsadf ff    dsgasdg
-                </div>
-                <div class="timestamp">09:09</div>
-              </div>
-              <div class="picture">
-                <img src="user.png" style="color: white;" alt="" srcset="">
-              </div>
-            </div>
-          </div>
-
-
-          <div class="chat-item left">
-            <div class="flex">
-              <div class="picture">
-                <img src="user.png" style="color: white;" alt="" srcset="">
-              </div>
-              <div class="content-box">
-                <div class="message">
-                  left nessage is it changingsadf <br>dfdfd<br>dfd   ff    dsgasdg
-                </div>
-                <div class="timestamp">09:09</div>
-              </div>
-            </div>
-          </div>
-          
-          <div class="chat-item right">
-            <div class="flex">
-              <div class="content-box">
-                <div class="message">
-                  Right nessage is it changingsadf ff    dsgasdg
-                </div>
-                <div class="timestamp">09:09</div>
-              </div>
-              <div class="picture">
-                <img src="user.png" style="color: white;" alt="" srcset="">
-              </div>
-            </div>
-          </div>
-          <div class="chat-item left">
-            <div class="flex">
-              <div class="picture">
-                <img src="user.png" style="color: white;" alt="" srcset="">
-              </div>
-              <div class="content-box">
-                <div class="message">
-                  left nessage is it changingsadf <br>dfdfd<br>dfd   ff    dsgasdg
-                </div>
-                <div class="timestamp">09:09</div>
-              </div>
-            </div>
-          </div>
-          
-          <div class="chat-item right">
-            <div class="flex">
-              <div class="content-box">
-                <div class="message">
-                  Right nessage is it changingsadf ff    dsgasdg
-                </div>
-                <div class="timestamp">09:09</div>
-              </div>
-              <div class="picture">
-                <img src="user.png" style="color: white;" alt="" srcset="">
-              </div>
-            </div>
-          </div>
-
-
-          <div class="chat-item left">
-            <div class="flex">
-              <div class="picture">
-                <img src="user.png" style="color: white;" alt="" srcset="">
-              </div>
-              <div class="content-box">
-                <div class="message">
-                  left nessage is it changingsadf <br>dfdfd<br>dfd   ff    dsgasdg
-                </div>
-                <div class="timestamp">09:09</div>
-              </div>
-            </div>
-          </div>
-          
-          <div class="chat-item right">
-            <div class="flex">
-              <div class="content-box">
-                <div class="message">
-                  Right nessage is it changingsadf ff    dsgasdg
-                </div>
-                <div class="timestamp">09:09</div>
-              </div>
-              <div class="picture">
-                <img src="user.png" style="color: white;" alt="" srcset="">
-              </div>
-            </div>
-          </div>
           <!-- <div class="chat-item">
             <div class="right-message">
               <div class="flex">
@@ -336,6 +208,8 @@
             </div>
           </div> -->
         </div>
+
+        
       </div>
 
       
@@ -361,6 +235,30 @@
     </div>
   </div>
 
+  <script>
+    
+    // window.onload(()=>{
+    //   obj = document.getElementsByClassName("sidebar")[0].style.display;
+    // })
+    function showbar(){
+      
+      // if(obj == "none" || obj == ""){
+      //   document.getElementsByClassName("sidebar")[0].style.display = "block";
+      // }
+      // else{
+      //   document.getElementsByClassName("sidebar")[0].style.display = "none";
+      // }
+      // document.getElementsByClassName("sidebar")[0].addEventListener("fullscreenchange", ()=>{
+      //   conosle.log("changing");
+      // });
+      document.getElementsByClassName("sidebar")[0].style.display = "block";
+
+    }
+    function hidebar(){
+      document.getElementsByClassName("sidebar")[0].style.display = "none";
+    }
+    
+  </script>
 </body>
 
 </html>
