@@ -1,16 +1,23 @@
+@{
+  Layout = null;
+}
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/5.0.13/signalr.min.js"></script>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
-    crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+          integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+          crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
   <link rel="stylesheet" href="style.css">
+
   <title>Document</title>
 </head>
 
@@ -123,7 +130,7 @@
         </div>
        
         <div class="user">
-          @Otheruserprofile
+          Otheruserprofile
         </div>
         <div class="picture">
           <img src="user.png" style="color: white;" alt="" srcset="">
@@ -215,9 +222,7 @@
       
       <div class="text-box-container">
         <div class="text-box">
-          <textarea>
-            
-          </textarea>
+          <input id="message-box"/>
           <div class="mid-icon pin-icon">
             <i class="fa-solid fa-paperclip"></i>
           </div>
@@ -227,7 +232,10 @@
         </div>
 
         <div class="large-icon send-icon">
-          <i class="fa-solid fa-paper-plane"></i>
+          <button>
+            <i class="fa-solid fa-paper-plane" id="sendButton"></i>
+            
+          </button>
         </div>
         
       </div>
@@ -235,22 +243,53 @@
     </div>
   </div>
 
-  <script>
+
+<script>
     
-    // window.onload(()=>{
-    //   obj = document.getElementsByClassName("sidebar")[0].style.display;
-    // })
+    var connection = new signalR.HubConnectionBuilder().withUrl("/chatHub").build();
+    
+            connection.on("ReceiveMessage", function (user, message) {
+                var encodedUser = $("<div />").text(user).html();
+                var encodedMsg = $("<div />").text(message).html();
+                console.log("recieved new");
+                
+              
+                 let msg = $`<div class="chat-item left">
+                             <div class="flex">
+                               <div class="picture">
+                                 <img class="chat-img" src="user.png" style="color: white;" alt="" srcset="">
+                               </div>
+                               <div class="content-box">
+                                 <div class="message">
+                                  {encodedMsg}
+                              
+                                 <div class="timestamp">09:09</div>
+                               </div>
+                             </div>
+                           </div>`
+                 console.log(msg)
+                           
+                $(".chat-items")[0].append(msg[0].html());
+            
+            });
+    
+            $("#sendButton").click(function () {
+                // var user = $("#username").val();
+                var user = "noi";
+                var message = $("#message-box").val();
+                console.log("send clicked");
+                connection.invoke("SendMessage", user, message);
+                $("#message-box").val("").focus();
+            });
+    
+            connection.start().then(function () {
+                console.log("Connected!");
+            }).catch(function (err) {
+                console.error(err.toString());
+            });
     function showbar(){
       
-      // if(obj == "none" || obj == ""){
-      //   document.getElementsByClassName("sidebar")[0].style.display = "block";
-      // }
-      // else{
-      //   document.getElementsByClassName("sidebar")[0].style.display = "none";
-      // }
-      // document.getElementsByClassName("sidebar")[0].addEventListener("fullscreenchange", ()=>{
-      //   conosle.log("changing");
-      // });
+      
       document.getElementsByClassName("sidebar")[0].style.display = "block";
 
     }
@@ -259,6 +298,299 @@
     }
     
   </script>
+<style>
+    /* -----------------------Side bar css -------------------- */
+    button{
+      display: ;
+    }
+    .sub-container{
+      display: flex;
+      height: 80vh;
+    }
+  
+    .sub-container > .sidebar{
+      border-right: 1px solid gray;
+      width: 25%;
+      height: 90vh;
+      display: block;
+    }
+  
+    
+    .user-heading{
+      background: #181823;
+      color: gray;
+      font-weight: bold;
+      height: auto;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      padding-right: 5px;
+    }
+  
+    .search-bar > form > input{
+      border: none;
+      background: #181823;
+      color: #E9F8F9;
+      outline-style: none;
+      width: 100%;
+    }
+  
+    .single-contact{
+      background: #1e2124;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid gray; 
+      padding-top: 5px;
+      padding-bottom: 5px;
+      padding-left: 5px;
+    }
+  
+    .single-contact:hover{
+      background: #181823;
+      cursor: pointer;
+    }
+  
+    .name{
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  
+    .name > p{
+      transform: translate(-50%, 25%);
+    }
+  
+    @@media (max-width: 990px){
+      .sidebar{
+        position: absolute;
+        z-index: 1;
+        background-color:#181823; 
+        display: none;
+        width: 300px !important;
+      }
+  
+      .main-area{
+        width: 100% !important;
+      }
+  
+      .small-screen{
+        display: block !important;
+      }
+    }
+    @@media (min-width: 990px){
+      .sidebar{
+        display: block !important; 
+      }
+    }
+  
+    .small-screen{
+      display: none;
+    }
+  
+    .small-screen > i{
+      transform: scale(1.5);
+    }
+    /* --------------main area css --------------- */
+    .main-area{
+      position: relative;
+      /* border: 1px solid white; */
+      width: 75%;
+      height: 80vh;
+      /* background-image: url(background.jpg); */
+      background: #181823;
+    }
+  
+    .main-heading{
+      background: #1e2124;
+      color: gray;
+      font-weight: bold;
+      height: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+  
+  .chats-area{
+      position: relative;
+      display: flex;
+      width: 100%;
+      height: 90%;
+      align-items:flex-end ;
+      overflow-y: scroll;
+      padding: 10px;
+    }
+  
+  
+  
+  
+  .chat-items{
+    width: 100%;
+    margin: auto;
+  }
+  
+  
+  .chat-item{
+      width: 100%;
+      /* border: 1px solid gray; */
+      display: flex;
+  }
+  
+  .chat-img {
+    height: 25px !important;
+    width: 25px !important;
+  }
+  
+  .right{
+    justify-content: end;
+  }
+  
+  .timestamp{
+    font-size: 13px;
+    color: #537FE7;
+  }
+  
+  .content-box-right > .timestamp{
+    float: right;
+  }
+  .one{
+    display: block;
+    width: 100%;
+  }
+  
+  /* .chat-items > .two{
+    justify-self: end; 
+  } */
+  
+  .left-message > .timestamp{
+    float: left;
+  }
+  
+  .right-message{
+    float: right;
+  }
+  
+  .right-message > .timestamp{
+    float:right;
+  }
+  
+  .picture > img{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    border: 2px solid gray;
+  }
+  
+  .message{
+    /* border: 1px solid gray; */
+    border-radius: 10px;
+    padding: 5px;
+    background: #537FE7;
+    box-shadow: 1px;
+    margin: 5px;
+    color: #E9F8F9;
+  }
+  
+  
+  .text-box-container{
+    display: flex;
+    margin-top:15px;
+    padding: 1px;
+  }
+  
+  
+  .text-box{
+    /* margin: 23px; */
+    width: 95%;
+    border: 2px solid gray;
+    display: flex;
+    justify-content: end;
+    gap: 10px;
+    padding-right: 10px;
+    padding-left: 15px;
+    align-items: center;
+    height: 40px;
+    border-radius: 23px 23px 23px 23px;
+  }
+  
+  .text-box > textarea{
+    width: 100%;
+    background-color: #181823;
+    color: gray;
+    align-items: center;
+    height: 100%;
+    /* padding-left: 34px; */
+    padding-top: 5px;
+    border: none;
+    outline-style: none;
+    resize: none;
+    
+  }
+  
+  .send-icon > i{
+    margin: 10px;
+    color: #537FE7;
+  }
+  
+  .pin-icon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* transform: translate(-50%); */
+    color:gray;
+    /* margin-right: 10px; */
+    height: 35px;
+    width: 40px;
+    border-radius: 50%;
+    /* transform: translateX(10px); */
+  
+  }
+  
+  .emoji-icon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* transform: translate(-50%); */
+    color:gray;
+    height: 35px;
+    width: 40px;
+    border-radius: 50%;
+    /* transform: translateX(20px); */
+  }
+  
+  .pin-icon:hover, .emoji-icon:hover{
+    background: #424549;
+  }
+  
+  
+  .mid-icon > i{
+    transform: scale(1.5);
+  }
+  
+  .large-icon > i{
+    transform: scale(2);
+  }
+  
+  i{
+    cursor: pointer;
+  }
+  
+  body{
+      background-color: #181823;
+      color: white;
+  }
+  
+  .flex{
+    display: flex;
+    gap: 10px;
+  }
+  
+
+</style>
 </body>
 
 </html>
