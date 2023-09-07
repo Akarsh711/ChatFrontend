@@ -232,7 +232,7 @@
         </div>
 
         <div class="large-icon send-icon">
-          <button>
+          <button class="message-btn">
             <i class="fa-solid fa-paper-plane" id="sendButton"></i>
             
           </button>
@@ -300,14 +300,38 @@
   </script>
 <style>
     /* -----------------------Side bar css -------------------- */
-    button{
-      display: ;
+    .message-btn{
+          background: #537FE7;
+          outline: none;
+          /* box-shadow: none; */
+          /* border-block-end-style: none; */
+          border: 1px;
+          border-radius: 50%;
+          height: 45px;
+          width: 45px;
+          transition: background-color 0.5s;
     }
+    
+    .message-btn:hover{
+      background-color:#80a4ff
+    }
+    
+    #message-box{
+        width: 100%;
+        border: none;
+        background-color: transparent;
+        color: white;
+        outline: none;
+    }
+    
+    
+     
+       
     .sub-container{
       display: flex;
       height: 80vh;
     }
-  
+    
     .sub-container > .sidebar{
       border-right: 1px solid gray;
       width: 25%;
@@ -500,21 +524,24 @@
     display: flex;
     margin-top:15px;
     padding: 1px;
+    align-items: center;
   }
   
   
   .text-box{
     /* margin: 23px; */
-    width: 95%;
-    border: 2px solid gray;
-    display: flex;
-    justify-content: end;
-    gap: 10px;
-    padding-right: 10px;
-    padding-left: 15px;
-    align-items: center;
-    height: 40px;
-    border-radius: 23px 23px 23px 23px;
+        /* margin: 23px; */
+        width: 95%;
+        border: 2px solid gray;
+        display: flex;
+        justify-content: end;
+        /* gap: 10px; */
+        /* padding-right: 10px; */
+         padding-left: 15px; 
+        align-items: center;
+        /* height: 40px; */
+        border-radius: 23px 23px 23px 23px;
+        margin-right: 10px;
   }
   
   .text-box > textarea{
@@ -547,7 +574,8 @@
     width: 40px;
     border-radius: 50%;
     /* transform: translateX(10px); */
-  
+    transition: background-color 0.5s;
+    
   }
   
   .emoji-icon{
@@ -560,6 +588,7 @@
     width: 40px;
     border-radius: 50%;
     /* transform: translateX(20px); */
+    transition: background-color 0.5s;
   }
   
   .pin-icon:hover, .emoji-icon:hover{
